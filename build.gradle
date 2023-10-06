@@ -6,6 +6,7 @@
  * user guide available at https://docs.gradle.org/4.2.1/userguide/tutorial_java_projects.html
  */
 
+apply plugin: 'maven-publish'
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'jacoco'
@@ -33,3 +34,15 @@ dependencies {
 
 eclipse.classpath.downloadJavadoc = true
 eclipse.classpath.downloadSources = true
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.github.MockBukkit'
+            artifactId = 'MockBukkit-v1.8'
+            version = 'v1.8-SNAPSHOT'
+
+            from components.java
+        }
+    }
+}
